@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/sleep_dashboard_title">
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="sleep_settings"
+        android:title="@string/sleep_dashboard_title" />
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="sleep_settings"
+        android:title="@string/sleep_dashboard_title" />
+    <Preference
+        android:defaultValue="false"
+        android:key="sleep_settings"
+        android:title="@string/sleep_dashboard_title" />
+    <Preference
+        android:defaultValue="false"
+        android:key="sleep_launch_time"
+        android:title="@string/sleep_dashboard_title" />
+    <com.android.settings.widget.BxRadioButtonPreference
+        android:defaultValue="false"
+        android:key="stop_t10"
+        android:title="@string/sleep_dashboard_title" />
+</PreferenceScreen>

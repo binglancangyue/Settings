@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="fingerprint_settings_applock">应用锁</string>
+    <!-- SPRD: modify for bug 739649 @{ -->
+    <string name="icc_pin_enabled">"SIM <xliff:g id="card_number">%1$d</xliff:g> PIN码已锁定!"</string>
+    <string name="icc_pin_disabled">"SIM <xliff:g id="card_number">%1$d</xliff:g> PIN码已解锁!"</string>
+    <!-- @} -->
+    <!-- SPRD: modify for bug831859 -->
+    <string name="vowifi_service_volte_open_synchronously">"为确保通话质量，增强型 4G LTE 模式会同步打开。"</string>
+
+    <!-- Added by faceid begin -->
+    <string name="face_unlock_set_unlock_pattern" msgid="4939057588092120368">"人脸 + 图案"</string>
+    <string name="face_unlock_set_unlock_pin" msgid="8010746824051056986">"人脸 + PIN 码"</string>
+    <string name="face_unlock_set_unlock_password" msgid="7351131075806338634">"人脸 + 密码"</string>
+    <string name="security_settings_faceid_preference_title">"人脸识别"</string>
+    <string name="security_settings_faceid_enroll_onboard_title">人脸设置</string>
+    <string name="security_settings_faceid_enroll_onboard_message">"要使用您的人脸解锁屏幕或确认购买交易，您需要："</string>
+    <string name="security_settings_faceid_enroll_onboard_message_1" >"设置备用屏幕锁定方式"</string>
+    <string name="security_settings_faceid_enroll_onboard_message_2">"添加您的人脸"</string>
+    <string name="security_settings_faceid_enroll_setup_screen_lock" msgid="1195743489835505376">"设置屏幕锁定"</string>
+    <string name="security_settings_faceid_enroll_introduction_title">"免责声明"</string>
+    <string name="security_settings_faceid_enroll_introduction_message">"使用人脸识别前，请牢记以下事项：\n1.您的手机可能会被面貌、外形与您相近的人或物品解锁。\n2.面部识别的安全性低于指纹、图案密码、数字密码和自定字母数字密码。\n3.在暗光、强光和逆光环境下，面部识别的解锁成功率会有所降低。\n"</string>
+    <string name="security_settings_faceid_enroll_introduction_message_warning">"为更好地使用面部识别，请注意：\n1.录入时，避免暗光、强光和逆光环境，确保录入的面部图像清晰。\n2.录入时，避免仰头、低头和侧头，确保录入正脸。\n3.录入成功后，点亮屏幕时即可通过面部识别解锁。"</string>
+    <string name="security_settings_faceid_enroll_add_faceid_title">添加人脸</string>
+    <string name="security_settings_faceid_enroll_finish_title">"人脸已添加！"</string>
+    <string name="security_settings_faceid_preference_summary">"人脸已设置"</string>
+    <string name="faceid_enroll_button_next">"下一步"</string>
+    <string name="security_settings_faceid_enroll_introduction_cancel">"取消"</string>
+    <string name="security_settings_faceid_enroll_introduction_continue">"继续"</string>
+    <string name="security_settings_faceid_enroll_done">"完成"</string>
+    <string name="faceid_enroll_button_add">"再添加一个"</string>
+    <string name="security_settings_faceid_enroll_finish_message">"注册已完成，欢迎使用人脸解锁功能!"</string>
+    <string name="faceid_add_title">"添加人脸"</string>
+    <string name="faceid_add_max">"您最多可以添加 <xliff:g id="COUNT">%d</xliff:g> 个人脸"</string>
+    <string name="security_settings_faceid_enroll_dialog_name_label">"名称"</string>
+    <string name="security_settings_faceid_enroll_dialog_ok">"确定"</string>
+    <string name="security_settings_faceid_enroll_dialog_delete">"删除"</string>
+    <string name="faceid_last_delete_title">"要移除注册的人脸吗？"</string>
+    <string name="faceid_last_delete_message">"您将无法使用人脸来解锁手机、授权购买交易或登录应用。"</string>
+    <string name="faceid_last_delete_confirm">"是，移除"</string>
+    <string name="security_settings_faceid_enroll_disclaimer_lockscreen_disabled">"屏幕锁定选项已停用。您仍然可以使用自己的人脸对购买交易和应用使用进行授权。"<annotation id="url">"了解详情"</annotation></string> 
+    <string name="security_settings_faceid_enroll_disclaimer">"除了将手机解锁，您还可以在购买物品时和登录应用时使用自己的人脸来验证身份。"<annotation id="url">"了解详情"</annotation></string>
+    <string name="security_settings_faceid_enroll_find_sensor_message">请保持双眼注视手机屏幕，并轻微地上下左右转动头部以保持系统录入足够多的数据。</string>
+    <string name="security_settings_faceid_enroll_add_faceid_tips">请保持脸部区域显示在屏幕范围内，并轻微地上下左右转动头部。</string>
+    <string name="faceid_livenessmodepreference_title">活体检测</string>
+    <string name="faceid_livenessmode_summary">开启此功能，解锁时需要眨眼睛以确保当前是本人而非照片或者其他物体试图解锁</string>
+    <string name="security_settings_faceid_switch_summary">人脸解锁功能</string>
+    <string name="faceid_delete_title">删除人脸数据</string>
+    <string name="faceid_Edit_title">重新录入人脸</string>
+    <string name="faceid_enroll_timeout">录入超时</string>
+    <string name="faceid_enroll_noface">未检测到人脸</string>
+    <string name="faceid_enroll_unknown">未知错误</string>
+    <string name="faceid_enroll_left">请向左移动一点</string>
+    <string name="faceid_enroll_right">请向右移动一点</string>
+    <string name="faceid_enroll_up">请向上移动一点</string>
+    <string name="faceid_enroll_down">请向下移动一点</string>
+    <string name="faceid_enroll_closer">请靠近一点</string>
+    <string name="faceid_enroll_far_away">请远离一点</string>
+    <string name="faceid_enroll_keep_pos">不支持</string>
+    <string name="faceid_enroll_need_diffpose">请更换姿势</string>
+    <!-- Added by faceid end -->
+</resources>
