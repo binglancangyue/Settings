@@ -2,6 +2,7 @@ package com.android.settings.deviceinfo;
 
 import android.content.Context;
 
+import com.android.settings.Customer;
 import com.android.settings.R;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
@@ -21,7 +22,11 @@ public class StatusPreferenceController extends AbstractPreferenceController imp
 
     @Override
     public boolean isAvailable() {
-        return false;
+        if (Customer.IS_KD003) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override

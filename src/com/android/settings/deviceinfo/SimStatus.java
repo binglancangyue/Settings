@@ -55,6 +55,7 @@ import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstantConversions;
 import com.android.internal.telephony.PhoneFactory;
+import com.android.settings.Customer;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
@@ -161,6 +162,14 @@ public class SimStatus extends SettingsPreferenceFragment {
             mCurrentTab = icicle.getInt(CURRENT_TAB);
         }
         /* @} */
+        //add by lym stat
+        if (Customer.IS_KD003){
+            removePreferenceFromScreen(KEY_LATEST_AREA_INFO);
+            removePreferenceFromScreen(KEY_ICCID);
+            removePreferenceFromScreen(KEY_PHONE_NUMBER);
+            removePreferenceFromScreen(KEY_ROAMING_STATE);
+        }
+        //end
     }
 
     @Override

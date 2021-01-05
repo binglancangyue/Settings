@@ -38,6 +38,7 @@ import android.text.TextUtils;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.util.ArrayUtils;
+import com.android.settings.Customer;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
@@ -125,7 +126,9 @@ public class Status extends SettingsPreferenceFragment implements Indexable {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             if (Intent.ACTION_BATTERY_CHANGED.equals(action)) {
-                mBatteryLevel.setSummary(Utils.getBatteryPercentage(intent));
+                if (mBatteryLevel != null) {
+                    mBatteryLevel.setSummary(Utils.getBatteryPercentage(intent));
+                }
                 mBatteryStatus.setSummary(Utils.getBatteryStatus(getResources(), intent));
             }
         }
@@ -201,6 +204,11 @@ public class Status extends SettingsPreferenceFragment implements Indexable {
             removePreferenceFromScreen(KEY_SIM_STATUS);
             removePreferenceFromScreen(KEY_IMEI_INFO);
         }
+        if (Customer.IS_KD003){
+            removePreferenceFromScreen(KEY_BATTERY_LEVEL);
+            removePreferenceFromScreen(KEY_BT_ADDRESS);
+            removePreferenceFromScreen(KEY_WIFI_MAC_ADDRESS);
+        }
     }
 
     @Override
@@ -249,7 +257,9 @@ public class Status extends SettingsPreferenceFragment implements Indexable {
         WifiInfo wifiInfo = mWifiManager.getConnectionInfo();
         boolean hasMacAddress = wifiInfo != null && wifiInfo.hasRealMacAddress();
         String macAddress = hasMacAddress ? wifiInfo.getMacAddress() : null;
-        mWifiMacAddress.setSummary(!TextUtils.isEmpty(macAddress) ? macAddress : mUnavailable);
+        if (mWifiMacAddress != null) {
+            mWifiMacAddress.setSummary(!TextUtils.isEmpty(macAddress) ? macAddress : mUnavailable);
+        }
     }
 
     private void setIpAddressStatus() {

@@ -1340,7 +1340,7 @@
     <string name="restore_default_apn_completed" msgid="2824775307377604897">"重設預設 APN 設定已完成。"</string>
     <string name="reset_dashboard_title" msgid="6254873816990678620">"重設選項"</string>
     <string name="reset_dashboard_summary" msgid="4851012632493522755">"網絡、應用程式或裝置可以重設"</string>
-    <string name="reset_network_title" msgid="6166025966016873843">"重設 Wi-Fi、流動數據和藍牙"</string>
+    <string name="reset_network_title" msgid="6166025966016873843">"重設 Wi-Fi、藍牙"</string>
     <string name="reset_network_desc" msgid="5547979398298881406">"此操作會重設所有網絡設定，包括：\n\n"<li>"Wi‑Fi"</li>\n<li>"流動數據"</li>\n<li>"藍牙"</li></string>
     <string name="reset_network_button_text" msgid="2035676527471089853">"重設設定"</string>
     <string name="reset_network_final_desc" msgid="6388371121099245116">"您要重設所有的網絡設定嗎？您無法復原這項操作！"</string>

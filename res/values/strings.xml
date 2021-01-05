@@ -3161,7 +3161,7 @@
 
     <!-- Reset Network -->
     <!-- Button title to reset Wi-Fi settings, Mobile data setting, bluetooth settings -->
-    <string name="reset_network_title">Reset Wi-Fi, mobile &amp; Bluetooth</string>
+    <string name="reset_network_title">Reset Wi-Fi, Bluetooth</string>
     <!-- SD card & phone storage settings screen, message on screen after user selects Reset network settings [CHAR LIMIT=NONE] -->
     <string name="reset_network_desc">This will reset all network settings, including:\n\n<li>Wi\u2011Fi</li>\n<li>Mobile data</li>\n<li>Bluetooth</li>"</string>
     <!-- SD card & phone storage settings screen, button on screen after user selects Reset network settings -->

@@ -18,6 +18,7 @@ package com.android.settings.network;
 
 import android.content.Context;
 
+import com.android.settings.Customer;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
 
@@ -33,7 +34,11 @@ public class NetworkResetPreferenceController extends AbstractPreferenceControll
 
     @Override
     public boolean isAvailable() {
-        return !mRestrictionChecker.hasUserRestriction();
+        if (Customer.IS_KD003) {
+            return false;
+        } else {
+            return !mRestrictionChecker.hasUserRestriction();
+        }
     }
 
     @Override

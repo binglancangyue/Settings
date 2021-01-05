@@ -25,16 +25,16 @@
                 android:layout_gravity="start"
                 android:text="@string/settings_remote_wake_up"
                 android:textColor="@color/black"
-                android:textSize="21sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/tv_remote_wake_up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="2dp"
                 android:text="@string/settings_closed"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -43,8 +43,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
             android:layout_gravity="end"
+            android:padding="6dp"
             tools:targetApi="ice_cream_sandwich" />
     </RelativeLayout>
 
@@ -52,7 +52,7 @@
         android:id="@+id/rl_part"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp">
+        android:layout_marginTop="8dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -66,16 +66,16 @@
                 android:layout_gravity="start"
                 android:text="@string/settings_park_monitor"
                 android:textColor="@color/black"
-                android:textSize="21sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/tv_park_monitor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="2dp"
                 android:text="@string/settings_opened"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -86,6 +86,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_gravity="end"
+            android:padding="6dp"
             tools:targetApi="ice_cream_sandwich" />
     </RelativeLayout>
 
@@ -93,7 +94,7 @@
         android:id="@+id/ll_park_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="8dp"
         android:orientation="vertical">
 
         <TextView
@@ -102,22 +103,24 @@
             android:layout_gravity="start"
             android:text="@string/settings_park_time"
             android:textColor="@color/black"
-            android:textSize="21sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tv_settings_park_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:layout_marginTop="3dp"
-            android:textSize="20sp" />
+            android:layout_marginTop="2dp"
+            android:textSize="18sp" />
     </LinearLayout>
 
 
     <LinearLayout
+        android:id="@+id/ll_g_sensor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:paddingTop="8dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -125,7 +128,7 @@
             android:layout_weight="0"
             android:text="@string/t10_wake_up"
             android:textColor="@color/black"
-            android:textSize="21sp" />
+            android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -141,21 +144,21 @@
                 android:layout_gravity="center"
                 android:clickable="false"
                 android:gravity="center"
-                android:padding="10dp"
+                android:padding="5dp"
                 android:text="@string/t10_wakeup_low"
-                android:textSize="21sp" />
+                android:textSize="20sp" />
 
             <RadioButton
                 android:id="@+id/rb_middle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginHorizontal="30dp"
+                android:layout_marginHorizontal="20dp"
                 android:clickable="false"
                 android:gravity="center"
-                android:padding="10dp"
+                android:padding="5dp"
                 android:text="@string/t10_wakeup_middle"
-                android:textSize="21sp" />
+                android:textSize="20sp" />
 
             <RadioButton
                 android:id="@+id/rb_hight"
@@ -164,9 +167,9 @@
                 android:layout_gravity="center"
                 android:clickable="false"
                 android:gravity="center"
-                android:padding="10dp"
+                android:padding="5dp"
                 android:text="@string/t10_wakeup_hight"
-                android:textSize="21sp" />
+                android:textSize="20sp" />
         </LinearLayout>
 
     </LinearLayout>

@@ -1356,7 +1356,7 @@
     <string name="restore_default_apn_completed" msgid="2824775307377604897">"重設預設 APN 設定已完成。"</string>
     <string name="reset_dashboard_title" msgid="6254873816990678620">"重設選項"</string>
     <string name="reset_dashboard_summary" msgid="4851012632493522755">"網路、應用程式或裝置可以重設"</string>
-    <string name="reset_network_title" msgid="6166025966016873843">"重設 Wi-Fi、行動網路和藍牙"</string>
+    <string name="reset_network_title" msgid="6166025966016873843">"重設 Wi-Fi、藍牙"</string>
     <string name="reset_network_desc" msgid="5547979398298881406">"這項操作會重設所有網路設定，包括：\n\n"<li>"Wi‑Fi"</li>\n<li>"行動數據"</li>\n<li>"藍牙"</li></string>
     <string name="reset_network_button_text" msgid="2035676527471089853">"重設設定"</string>
     <!-- SPRD: modify for bug774152 -->
@@ -1469,7 +1469,7 @@
     <string name="location_sources_heading" msgid="1278732419851088319">"位置資訊來源"</string>
     <string name="about_settings" product="tablet" msgid="593457295516533765">"關於平板電腦"</string>
 <!--    <string name="about_settings" product="default" msgid="1743378368185371685">"關於手機"</string>-->
-    <string name="about_settings" product="default" msgid="1743378368185371685">"關於智能裝置"</string>
+    <string name="about_settings" product="default" msgid="1743378368185371685">"關於車機"</string>
 
     <string name="about_settings" product="emulator" msgid="221313099578564438">"關於模擬裝置"</string>
     <string name="about_settings_summary" msgid="3371517697156165959">"查看法律資訊、狀態、軟體版本"</string>

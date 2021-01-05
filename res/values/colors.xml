@@ -119,4 +119,6 @@
 
     <color name="ic_launcher_background">#90a3cb</color>
     <color name="shortcut_fillcolor">#ffffff</color>
+    <color name="kd003Black">#1f1f1f</color>
+
 </resources>

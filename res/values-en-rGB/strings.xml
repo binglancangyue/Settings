@@ -1351,7 +1351,7 @@
     <string name="restore_default_apn_completed" msgid="2824775307377604897">"Reset default APN settings completed"</string>
     <string name="reset_dashboard_title" msgid="6254873816990678620">"Reset options"</string>
     <string name="reset_dashboard_summary" msgid="4851012632493522755">"Network, apps or device can be reset"</string>
-    <string name="reset_network_title" msgid="6166025966016873843">"Reset Wi-Fi, mobile &amp; Bluetooth"</string>
+    <string name="reset_network_title" msgid="6166025966016873843">"Reset Wi-Fi, Bluetooth"</string>
     <string name="reset_network_desc" msgid="5547979398298881406">"This will reset all network settings, including:\n\n"<li>"Wi‑Fi"</li>\n<li>"Mobile data"</li>\n<li>"Bluetooth"</li></string>
     <string name="reset_network_button_text" msgid="2035676527471089853">"Reset settings"</string>
     <string name="reset_network_final_desc" msgid="6388371121099245116">"Reset all network settings? You can\'t undo this action!"</string>

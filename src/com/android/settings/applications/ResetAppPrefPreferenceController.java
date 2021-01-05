@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.support.v7.preference.Preference;
 import android.text.TextUtils;
 
+import com.android.settings.Customer;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
@@ -52,7 +53,11 @@ public class ResetAppPrefPreferenceController extends AbstractPreferenceControll
 
     @Override
     public boolean isAvailable() {
-        return true;
+        if (Customer.IS_KD003) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     @Override

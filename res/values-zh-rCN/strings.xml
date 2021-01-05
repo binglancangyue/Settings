@@ -1353,7 +1353,7 @@
     <string name="restore_default_apn_completed" msgid="2824775307377604897">"已重置默认APN设置。"</string>
     <string name="reset_dashboard_title" msgid="6254873816990678620">"重置选项"</string>
     <string name="reset_dashboard_summary" msgid="4851012632493522755">"网络、应用或设备可以重置"</string>
-    <string name="reset_network_title" msgid="6166025966016873843">"重置 WLAN、移动数据网络和蓝牙设置"</string>
+    <string name="reset_network_title" msgid="6166025966016873843">"重置 WLAN、蓝牙设置"</string>
     <string name="reset_network_desc" msgid="5547979398298881406">"此操作会重置所有网络设置，包括：\n\n"<li>"WLAN"</li>\n<li>"移动数据网络"</li>\n<li>"蓝牙"</li></string>
     <string name="reset_network_button_text" msgid="2035676527471089853">"重置设置"</string>
     <string name="reset_network_final_desc" msgid="6388371121099245116">"要重置所有网络设置吗？此操作无法撤消！"</string>

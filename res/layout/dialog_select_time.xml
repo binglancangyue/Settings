@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:paddingHorizontal="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/rb_time_8"
+            style="@style/RadioButtonT10Style"
+            android:text="@string/settings_park_time_8" />
+
+        <RadioButton
+            android:id="@+id/rb_time_16"
+            style="@style/RadioButtonT10Style"
+            android:text="@string/settings_park_time_16" />
+
+        <RadioButton
+            android:id="@+id/rb_time_24"
+            style="@style/RadioButtonT10Style"
+            android:text="@string/settings_park_time_24" />
+
+        <RadioButton
+            android:id="@+id/rb_time_48"
+            style="@style/RadioButtonT10Style"
+            android:text="@string/settings_park_time_48" />
+
+        <RadioButton
+            android:id="@+id/rb_time_always"
+            style="@style/RadioButtonT10Style"
+            android:text="@string/settings_park_time_always" />
+    </LinearLayout>
+</ScrollView>

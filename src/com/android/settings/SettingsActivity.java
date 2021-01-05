@@ -338,7 +338,6 @@ public class SettingsActivity extends SettingsDrawerActivity
 
         setContentView(mIsShowingDashboard ?
                 R.layout.settings_main_dashboard : R.layout.settings_main_prefs);
-
         mContent = findViewById(R.id.main_content);
 
         getFragmentManager().addOnBackStackChangedListener(this);
@@ -883,14 +882,9 @@ public class SettingsActivity extends SettingsDrawerActivity
                 || somethingChanged;
 
         somethingChanged = setTileEnabled(new ComponentName(packageName,
-                        Settings.NetworkDashboardActivity.class.getName()),
-                !UserManager.isDeviceInDemoMode(this), isAdmin)
-                || somethingChanged;
-
- /*       somethingChanged = setTileEnabled(new ComponentName(packageName,
                         Settings.ConnectedDeviceDashboardActivity.class.getName()),
                 !UserManager.isDeviceInDemoMode(this), isAdmin)
-                || somethingChanged;*/
+                || somethingChanged;
 
         somethingChanged = setTileEnabled(new ComponentName(packageName,
                         Settings.DateTimeSettingsActivity.class.getName()),
@@ -921,7 +915,10 @@ public class SettingsActivity extends SettingsDrawerActivity
                 || somethingChanged;
 
         //add by lym start
-
+/*        somethingChanged = setTileEnabled(new ComponentName(packageName,
+                        Settings.NetworkDashboardActivity.class.getName()),
+                !UserManager.isDeviceInDemoMode(this), isAdmin)
+                || somethingChanged;*/
         /*somethingChanged = setTileEnabled(new ComponentName(packageName,
                         Settings.SimSettingsActivity.class.getName()),
                 Utils.showSimCardTile(this), isAdmin)
@@ -946,8 +943,6 @@ public class SettingsActivity extends SettingsDrawerActivity
         //setTileEnabled(new ComponentName(packageName,
         //      Settings.SecuritySettingsActivity.class.getName()), false, isAdmin);
 
-        setTileEnabled(new ComponentName(packageName,
-                Settings.LanguageAndInputSettingsActivity.class.getName()), false, isAdmin);
 
         /*somethingChanged = setTileEnabled(new ComponentName(packageName,
                         Settings.PrintSettingsActivity.class.getName()),
@@ -963,15 +958,22 @@ public class SettingsActivity extends SettingsDrawerActivity
 
         setTileEnabled(new ComponentName(packageName,
                 Settings.AppAndNotificationDashboardActivity.class.getName()), false, isAdmin);
-
         setTileEnabled(new ComponentName(packageName,
-                Settings.SleepActivity.class.getName()), false, isAdmin);
-//        setTileEnabled(new ComponentName(packageName,
-//                Settings.ConnectedDeviceDashboardActivity.class.getName()), false, isAdmin);
-        somethingChanged = setTileEnabled(new ComponentName(packageName,
-                        Settings.ConnectedDeviceDashboardActivity.class.getName()),
-                false, isAdmin)
-                || somethingChanged;
+                Settings.StorageDashboardActivity.class.getName()), true, isAdmin);
+        boolean isShow = true;
+        if (Customer.IS_KD003) {
+            isShow = false;
+        }
+        setTileEnabled(new ComponentName(packageName,
+                Settings.NetworkDashboardActivity.class.getName()), isShow, isAdmin);
+        setTileEnabled(new ComponentName(packageName,
+                Settings.ConnectedDeviceDashboardActivity.class.getName()), isShow, isAdmin);
+        setTileEnabled(new ComponentName(packageName,
+                Settings.SoundSettingsActivity.class.getName()), isShow, isAdmin);
+        setTileEnabled(new ComponentName(packageName,
+                Settings.LanguageAndInputSettingsActivity.class.getName()), isShow, isAdmin);
+        setTileEnabled(new ComponentName(packageName,
+                Settings.SleepActivity.class.getName()), isShow, isAdmin);
         //end
 
         /**

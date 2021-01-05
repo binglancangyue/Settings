@@ -44,6 +44,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
+import com.android.settings.Customer;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
@@ -123,7 +124,9 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
         mExternalCategory = (PreferenceCategory) findPreference("storage_external");
 
         mInternalSummary = new StorageSummaryPreference(getPrefContext());
-
+        if (Customer.IS_KD003) {
+            mInternalCategory.removeAll();
+        }
         setHasOptionsMenu(true);
     }
 
@@ -161,8 +164,9 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
         mInternalCategory.removeAll();
         mExternalCategory.removeAll();
 
-        mInternalCategory.addPreference(mInternalSummary);
-
+        if (!Customer.IS_KD003) {
+            mInternalCategory.addPreference(mInternalSummary);
+        }
         int privateCount = 0;
         final StorageManagerVolumeProvider smvp = new StorageManagerVolumeProvider(mStorageManager);
         final PrivateStorageInfo info = PrivateStorageInfo.getPrivateStorageInfo(smvp);
@@ -173,12 +177,12 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
         Collections.sort(volumes, VolumeInfo.getDescriptionComparator());
 
         for (VolumeInfo vol : volumes) {
-            if (vol.getType() == VolumeInfo.TYPE_PRIVATE) {
+            if (vol.getType() == VolumeInfo.TYPE_PRIVATE && !Customer.IS_KD003) {
                 long volumeTotalBytes = PrivateStorageInfo.getTotalSize(vol,
-                         sTotalInternalStorage);
+                        sTotalInternalStorage);
                 final int color = COLOR_PRIVATE[privateCount++ % COLOR_PRIVATE.length];
                 mInternalCategory.addPreference(
-                    new StorageVolumePreference(context, vol, color, volumeTotalBytes));
+                        new StorageVolumePreference(context, vol, color, volumeTotalBytes));
             } else if (vol.getType() == VolumeInfo.TYPE_PUBLIC) {
                 mExternalCategory.addPreference(
                         new StorageVolumePreference(context, vol, COLOR_PUBLIC, 0));
@@ -189,7 +193,8 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
         final List<VolumeRecord> recs = mStorageManager.getVolumeRecords();
         for (VolumeRecord rec : recs) {
             if (rec.getType() == VolumeInfo.TYPE_PRIVATE
-                    && mStorageManager.findVolumeByUuid(rec.getFsUuid()) == null) {
+                    && mStorageManager.findVolumeByUuid(rec.getFsUuid()) == null
+                    && !Customer.IS_KD003) {
                 // TODO: add actual storage type to record
                 final Drawable icon = context.getDrawable(R.drawable.ic_sim_sd);
                 icon.mutate();

@@ -131,4 +131,9 @@ public class SystemDashboardFragment extends DashboardFragment {
                     return keys;
                 }
             };
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
 }

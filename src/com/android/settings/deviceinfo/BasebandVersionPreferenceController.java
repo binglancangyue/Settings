@@ -18,6 +18,7 @@ package com.android.settings.deviceinfo;
 import android.content.Context;
 import android.os.SystemProperties;
 import android.support.v7.preference.Preference;
+import android.util.Log;
 
 import com.android.settings.R;
 import com.android.settings.Utils;
@@ -49,13 +50,20 @@ public class BasebandVersionPreferenceController extends AbstractPreferenceContr
     @Override
     public void updateState(Preference preference) {
         super.updateState(preference);
-         /*SPRD added for bug 692483*/
-         if (!SupportCPVersion.getInstance().isSupport()) {
-             preference.setSummary(SystemProperties.get(BASEBAND_PROPERTY,
-                mContext.getResources().getString(R.string.device_info_default)));
-         }else{
-             SupportCPVersion.getInstance().initPreference( mContext, preference);
-             SupportCPVersion.getInstance().startRunnable();
-         }
+        /*SPRD added for bug 692483*/
+        String baseband = SystemProperties.get(BASEBAND_PROPERTY,
+                mContext.getResources().getString(R.string.device_info_default));
+        baseband = baseband.replace("9832e", "8541e");
+        String mar = "MARLIN2_17A_RLS1_W18.45.3|sharkle_cm4|11-07-2018 16:04:32";
+        baseband = baseband + "\n" + mar;
+        preference.setSummary(baseband);
+//        if (!SupportCPVersion.getInstance().isSupport()) {
+//            preference.setSummary(SystemProperties.get(BASEBAND_PROPERTY,
+//                    mContext.getResources().getString(R.string.device_info_default)));
+//        } else {
+//            Log.d("aaa", "updateState: SupportCPVersion");
+//            SupportCPVersion.getInstance().initPreference(mContext, preference);
+//            SupportCPVersion.getInstance().startRunnable();
+//        }
     }
 }
