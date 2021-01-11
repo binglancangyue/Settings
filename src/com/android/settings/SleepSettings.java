@@ -4,13 +4,11 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.database.ContentObserver;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.Settings;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +18,6 @@ import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.android.settings.applications.SettingsApp;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 
@@ -61,7 +58,7 @@ public class SleepSettings extends Fragment implements View.OnClickListener {
         mContext.getContentResolver().registerContentObserver(
                 Settings.Global.getUriFor(SELECT_PARK_TIME),
                 false, mContentObserver);
-        type = getSelectTime();
+        type = getSelectedSleepTime();
     }
 
     private static class MyHandle extends Handler {
@@ -117,7 +114,7 @@ public class SleepSettings extends Fragment implements View.OnClickListener {
         rbLow.setOnClickListener(this);
         rbMiddle.setOnClickListener(this);
         rbHigh.setOnClickListener(this);
-        type = getSelectTime();
+//        type = getSelectedSleepTime();
         updateSummary();
         setCheckedLevel();
         initRbt(0);
@@ -238,12 +235,12 @@ public class SleepSettings extends Fragment implements View.OnClickListener {
         @Override
         public void onChange(boolean selfChange) {
             super.onChange(selfChange);
-            type = getSelectTime();
+            type = getSelectedSleepTime();
             myHandle.sendEmptyMessage(1);
         }
     };
 
-    private int getSelectTime() {
+    private int getSelectedSleepTime() {
         return Settings.Global.getInt(mContext.getContentResolver(),
                 SELECT_PARK_TIME, 0);
     }
