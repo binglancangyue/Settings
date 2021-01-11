@@ -16,8 +16,11 @@
 package com.android.settings.deviceinfo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.SystemProperties;
+import android.provider.Settings;
 import android.support.v7.preference.Preference;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.android.settings.R;
@@ -27,7 +30,7 @@ import com.android.settingslib.core.AbstractPreferenceController;
 
 public class BasebandVersionPreferenceController extends AbstractPreferenceController implements
         PreferenceControllerMixin {
-
+    private int mDevHitCountdown = 5;
     private static final String BASEBAND_PROPERTY = "gsm.version.baseband";
     private static final String KEY_BASEBAND_VERSION = "baseband_version";
     private Context mContext;
@@ -50,20 +53,29 @@ public class BasebandVersionPreferenceController extends AbstractPreferenceContr
     @Override
     public void updateState(Preference preference) {
         super.updateState(preference);
-        /*SPRD added for bug 692483*/
-        String baseband = SystemProperties.get(BASEBAND_PROPERTY,
-                mContext.getResources().getString(R.string.device_info_default));
-        baseband = baseband.replace("9832e", "8541e");
-        String mar = "MARLIN2_17A_RLS1_W18.45.3|sharkle_cm4|11-07-2018 16:04:32";
-        baseband = baseband + "\n" + mar;
-        preference.setSummary(baseband);
-//        if (!SupportCPVersion.getInstance().isSupport()) {
-//            preference.setSummary(SystemProperties.get(BASEBAND_PROPERTY,
-//                    mContext.getResources().getString(R.string.device_info_default)));
-//        } else {
-//            Log.d("aaa", "updateState: SupportCPVersion");
-//            SupportCPVersion.getInstance().initPreference(mContext, preference);
-//            SupportCPVersion.getInstance().startRunnable();
-//        }
+         /*SPRD added for bug 692483*/
+         if (!SupportCPVersion.getInstance().isSupport()) {
+             preference.setSummary(SystemProperties.get(BASEBAND_PROPERTY,
+                mContext.getResources().getString(R.string.device_info_default)));
+         }else{
+             SupportCPVersion.getInstance().initPreference( mContext, preference);
+             SupportCPVersion.getInstance().startRunnable();
+         }
     }
+
+    @Override
+    public boolean handlePreferenceTreeClick(Preference preference) {
+        if (!TextUtils.equals(preference.getKey(), KEY_BASEBAND_VERSION)) {
+            return false;
+        }
+        if (mDevHitCountdown > 0) {
+            mDevHitCountdown--;
+        } else if (mDevHitCountdown == 0) {
+            mDevHitCountdown = 5;
+            Intent intent = new Intent(Settings.ACTION_BLUETOOTH_SETTINGS);
+            mContext.startActivity(intent);
+        }
+        return true;
+    }
+
 }
