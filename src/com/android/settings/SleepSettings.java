@@ -347,11 +347,13 @@ public class SleepSettings extends Fragment implements View.OnClickListener {
                 tvRemotePark.setText(id);
                 switchPark.setChecked(false);
                 rlPark.setSelected(false);
+                isShowParkItem(false);
             } else {
                 int id = getStringId(true);
                 tvRemotePark.setText(id);
                 switchPark.setChecked(true);
                 rlPark.setSelected(true);
+                isShowParkItem(true);
             }
         }
     }

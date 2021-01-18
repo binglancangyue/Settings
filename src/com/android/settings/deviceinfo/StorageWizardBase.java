@@ -108,13 +108,13 @@ public abstract class StorageWizardBase extends Activity {
         super.onPostCreate(savedInstanceState);
 
         final Window window = getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS |
-                WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN |
-                WindowManager.LayoutParams.FLAG_LAYOUT_INSET_DECOR);
-        window.setStatusBarColor(Color.TRANSPARENT);
+//        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS |
+//                WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN |
+//                WindowManager.LayoutParams.FLAG_LAYOUT_INSET_DECOR);
+//        window.setStatusBarColor(Color.TRANSPARENT);
 
-        mCustomNav.setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+//        mCustomNav.setSystemUiVisibility(
+//                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
 
         final View scrollView = findViewById(R.id.suw_bottom_scroll_view);
         scrollView.setVerticalFadingEdgeEnabled(true);
