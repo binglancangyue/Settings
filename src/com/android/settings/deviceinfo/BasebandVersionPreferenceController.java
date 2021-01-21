@@ -23,6 +23,7 @@ import android.support.v7.preference.Preference;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.android.settings.Customer;
 import com.android.settings.R;
 import com.android.settings.Utils;
 import com.android.settings.core.PreferenceControllerMixin;
@@ -66,6 +67,9 @@ public class BasebandVersionPreferenceController extends AbstractPreferenceContr
     @Override
     public boolean handlePreferenceTreeClick(Preference preference) {
         if (!TextUtils.equals(preference.getKey(), KEY_BASEBAND_VERSION)) {
+            return false;
+        }
+        if (!Customer.IS_SUPPORT_BACK_DOOR) {
             return false;
         }
         if (mDevHitCountdown > 0) {

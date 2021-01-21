@@ -16,8 +16,12 @@
 package com.android.settings.deviceinfo;
 
 import android.content.Context;
+import android.content.Intent;
+import android.provider.Settings;
 import android.support.v7.preference.Preference;
+import android.text.TextUtils;
 
+import com.android.settings.Customer;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.DeviceInfoUtils;
 import com.android.settingslib.core.AbstractPreferenceController;
@@ -26,9 +30,12 @@ public class KernelVersionPreferenceController extends AbstractPreferenceControl
         PreferenceControllerMixin {
 
     private static final String KEY_KERNEL_VERSION = "kernel_version";
+    private int mDevHitCountdown = 5;
+    private Context mContext;
 
     public KernelVersionPreferenceController(Context context) {
         super(context);
+        this.mContext = context;
     }
 
     @Override
@@ -45,5 +52,23 @@ public class KernelVersionPreferenceController extends AbstractPreferenceControl
     @Override
     public String getPreferenceKey() {
         return KEY_KERNEL_VERSION;
+    }
+
+    @Override
+    public boolean handlePreferenceTreeClick(Preference preference) {
+        if (!TextUtils.equals(preference.getKey(), KEY_KERNEL_VERSION)) {
+            return false;
+        }
+        if (!Customer.IS_SUPPORT_BACK_DOOR) {
+            return false;
+        }
+        if (mDevHitCountdown > 0) {
+            mDevHitCountdown--;
+        } else if (mDevHitCountdown == 0) {
+            mDevHitCountdown = 5;
+            Intent intent = new Intent(Settings.ACTION_WIFI_SETTINGS);
+            mContext.startActivity(intent);
+        }
+        return true;
     }
 }

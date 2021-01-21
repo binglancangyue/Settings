@@ -200,7 +200,6 @@ public class DeviceInfoSettings extends DashboardFragment implements Indexable {
                         data.screenTitle = res.getString(R.string.about_settings);
                         result.add(data);
                     }
-
                     return result;
                 }
 
