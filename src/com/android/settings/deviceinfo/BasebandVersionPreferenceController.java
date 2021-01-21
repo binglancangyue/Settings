@@ -31,7 +31,7 @@ import com.android.settingslib.core.AbstractPreferenceController;
 
 public class BasebandVersionPreferenceController extends AbstractPreferenceController implements
         PreferenceControllerMixin {
-    private int mDevHitCountdown = 5;
+    private int mDevHitCountdown = 8;
     private static final String BASEBAND_PROPERTY = "gsm.version.baseband";
     private static final String KEY_BASEBAND_VERSION = "baseband_version";
     private Context mContext;
@@ -75,7 +75,7 @@ public class BasebandVersionPreferenceController extends AbstractPreferenceContr
         if (mDevHitCountdown > 0) {
             mDevHitCountdown--;
         } else if (mDevHitCountdown == 0) {
-            mDevHitCountdown = 5;
+            mDevHitCountdown = 8;
             Intent intent = new Intent(Settings.ACTION_BLUETOOTH_SETTINGS);
             mContext.startActivity(intent);
         }

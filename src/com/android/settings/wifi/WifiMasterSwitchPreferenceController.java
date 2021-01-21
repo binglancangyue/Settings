@@ -86,8 +86,8 @@ public class WifiMasterSwitchPreferenceController extends AbstractPreferenceCont
 
     @Override
     public void onStart() {
-//        mWifiEnabler = new WifiEnabler(mContext, new MasterSwitchController(mWifiPreference),
-//            mMetricsFeatureProvider);
+        mWifiEnabler = new WifiEnabler(mContext, new MasterSwitchController(mWifiPreference),
+            mMetricsFeatureProvider);
     }
 
     @Override

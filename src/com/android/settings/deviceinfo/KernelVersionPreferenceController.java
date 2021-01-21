@@ -29,8 +29,8 @@ import com.android.settingslib.core.AbstractPreferenceController;
 public class KernelVersionPreferenceController extends AbstractPreferenceController implements
         PreferenceControllerMixin {
 
-    private static final String KEY_KERNEL_VERSION = "kernel_version";
-    private int mDevHitCountdown = 5;
+    private static final String KEY_KERNEL_VERSION =                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                "kernel_version";
+    private int mDevHitCountdown = 8;
     private Context mContext;
 
     public KernelVersionPreferenceController(Context context) {
@@ -65,7 +65,7 @@ public class KernelVersionPreferenceController extends AbstractPreferenceControl
         if (mDevHitCountdown > 0) {
             mDevHitCountdown--;
         } else if (mDevHitCountdown == 0) {
-            mDevHitCountdown = 5;
+            mDevHitCountdown = 8;
             Intent intent = new Intent(Settings.ACTION_WIFI_SETTINGS);
             mContext.startActivity(intent);
         }
