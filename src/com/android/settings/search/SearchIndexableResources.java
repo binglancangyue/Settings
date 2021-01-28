@@ -261,7 +261,7 @@ public final class SearchIndexableResources {
         }
         //<-- support AGPS settings END
         //SPRD 708256 add search index of schedule power on/off
-        addIndex(AlarmClock.class ,NO_DATA_RES_ID , R.drawable.ic_settings_power_off);
+        //addIndex(AlarmClock.class ,NO_DATA_RES_ID , R.drawable.ic_settings_power_off);
 
     }
 

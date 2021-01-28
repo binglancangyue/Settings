@@ -965,12 +965,12 @@ public class SettingsActivity extends SettingsDrawerActivity
                 Settings.AppAndNotificationDashboardActivity.class.getName()), false, isAdmin);
 
         setTileEnabled(new ComponentName(packageName,
-                Settings.SleepActivity.class.getName()), false, isAdmin);
+                Settings.SleepActivity.class.getName()), true, isAdmin);
 //        setTileEnabled(new ComponentName(packageName,
 //                Settings.ConnectedDeviceDashboardActivity.class.getName()), false, isAdmin);
         somethingChanged = setTileEnabled(new ComponentName(packageName,
                         Settings.ConnectedDeviceDashboardActivity.class.getName()),
-                false, isAdmin)
+                true, isAdmin)
                 || somethingChanged;
         //end
 
