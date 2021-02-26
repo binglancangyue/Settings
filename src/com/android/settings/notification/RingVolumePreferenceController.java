@@ -90,8 +90,8 @@ public class RingVolumePreferenceController extends VolumeSeekBarPreferenceContr
     @Override
     public boolean isAvailable() {
         // by lym start
-        return Utils.isVoiceCapable(mContext) && !mHelper.isSingleVolume();
-//        return false;
+//        return Utils.isVoiceCapable(mContext) && !mHelper.isSingleVolume();
+        return false;
         // end
     }
 

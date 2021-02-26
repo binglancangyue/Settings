@@ -32,7 +32,7 @@ public class MediaVolumePreferenceController extends
 
     @Override
     public boolean isAvailable() {
-        return false;
+        return true;
     }
 
     @Override
