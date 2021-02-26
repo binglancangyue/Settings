@@ -3,7 +3,7 @@
     coreApp="true"
     package="com.android.settings"
     android:sharedUserId="android.uid.system"
-    android:versionName="8.1.0.210109.1">
+    android:versionName="8.1.0.1102.1">
 
     <original-package android:name="com.android.settings" />
 
@@ -101,7 +101,7 @@
             android:requiredForAllUsers="true"
             android:supportsRtl="true"
             android:allowBackup="false"
-            android:name=".applications.SettingsApp"
+        android:name=".applications.SettingsApp"
             android:usesCleartextTraffic="true"
             android:defaultToDeviceProtectedStorage="true"
             android:directBootAware="true">

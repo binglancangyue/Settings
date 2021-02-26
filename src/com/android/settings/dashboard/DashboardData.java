@@ -89,7 +89,7 @@ public class DashboardData {
     private String[] SETTINGS_FOR_RESTRICTED = {
         Settings.SmartControlsSettingsActivity.class.getName(),
         NavigationBarSettings.class.getName(),
-        AlarmClock.class.getName(),
+        //AlarmClock.class.getName(),
         AudioProfileSettings.class.getName(),
         Settings.DevelopmentSettingsActivity.class.getName(),
     };
