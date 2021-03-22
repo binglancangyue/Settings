@@ -38,6 +38,7 @@ import android.text.TextUtils;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.util.ArrayUtils;
+import com.android.settings.Customer;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
@@ -61,6 +62,8 @@ public class Status extends SettingsPreferenceFragment implements Indexable {
     private static final String KEY_WIMAX_MAC_ADDRESS = "wimax_mac_address";
     private static final String KEY_SIM_STATUS = "sim_status";
     private static final String KEY_IMEI_INFO = "imei_info";
+    private static final String KEY_UPDATE_TIME = "up_time";
+    private static final String KEY_SERIAL_NUMBER = "serial_number";
 
     // Broadcasts to listen to for connectivity changes.
     private static final String[] CONNECTIVITY_INTENTS = {
@@ -90,6 +93,7 @@ public class Status extends SettingsPreferenceFragment implements Indexable {
     private Preference mIpAddress;
     private Preference mWifiMacAddress;
     private Preference mWimaxMacAddress;
+    private Preference mSerialNumber;
     private Handler mHandler;
 
     private static class MyHandler extends Handler {
@@ -125,8 +129,12 @@ public class Status extends SettingsPreferenceFragment implements Indexable {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             if (Intent.ACTION_BATTERY_CHANGED.equals(action)) {
-                mBatteryLevel.setSummary(Utils.getBatteryPercentage(intent));
-                mBatteryStatus.setSummary(Utils.getBatteryStatus(getResources(), intent));
+                if (mBatteryLevel != null) {
+                    mBatteryLevel.setSummary(Utils.getBatteryPercentage(intent));
+                }
+                if (mBatteryStatus != null) {
+                    mBatteryStatus.setSummary(Utils.getBatteryStatus(getResources(), intent));
+                }
             }
         }
     };
@@ -147,7 +155,7 @@ public class Status extends SettingsPreferenceFragment implements Indexable {
     }
 
     private boolean hasWimax() {
-        return  mCM.getNetworkInfo(ConnectivityManager.TYPE_WIMAX) != null;
+        return mCM.getNetworkInfo(ConnectivityManager.TYPE_WIMAX) != null;
     }
 
     @Override
@@ -167,12 +175,12 @@ public class Status extends SettingsPreferenceFragment implements Indexable {
         mWifiMacAddress = findPreference(KEY_WIFI_MAC_ADDRESS);
         mWimaxMacAddress = findPreference(KEY_WIMAX_MAC_ADDRESS);
         mIpAddress = findPreference(KEY_IP_ADDRESS);
-
+        mSerialNumber = findPreference(KEY_SERIAL_NUMBER);
         mRes = getResources();
         mUnavailable = mRes.getString(R.string.status_unavailable);
 
         // Note - missing in zaku build, be careful later...
-        mUptime = findPreference("up_time");
+        mUptime = findPreference(KEY_UPDATE_TIME);
         final PreferenceScreen screen = getPreferenceScreen();
         if (!hasBluetooth()) {
             screen.removePreference(mBtAddress);
@@ -185,8 +193,8 @@ public class Status extends SettingsPreferenceFragment implements Indexable {
         }
 
         mConnectivityIntentFilter = new IntentFilter();
-        for (String intent: CONNECTIVITY_INTENTS) {
-             mConnectivityIntentFilter.addAction(intent);
+        for (String intent : CONNECTIVITY_INTENTS) {
+            mConnectivityIntentFilter.addAction(intent);
         }
 
         updateConnectivity();
@@ -201,6 +209,16 @@ public class Status extends SettingsPreferenceFragment implements Indexable {
             removePreferenceFromScreen(KEY_SIM_STATUS);
             removePreferenceFromScreen(KEY_IMEI_INFO);
         }
+        if (Customer.IS_ONLY_SHOW_IMEI) {
+            removePreferenceFromScreen(KEY_SIM_STATUS);
+            removePreferenceFromScreen(KEY_BATTERY_LEVEL);
+            removePreferenceFromScreen(KEY_BATTERY_STATUS);
+            removePreferenceFromScreen(KEY_BT_ADDRESS);
+            removePreferenceFromScreen(KEY_WIFI_MAC_ADDRESS);
+            removePreferenceFromScreen(KEY_WIMAX_MAC_ADDRESS);
+            removePreferenceFromScreen(KEY_IP_ADDRESS);
+            removePreferenceFromScreen(KEY_UPDATE_TIME);
+        }
     }
 
     @Override
@@ -212,7 +230,7 @@ public class Status extends SettingsPreferenceFragment implements Indexable {
     public void onResume() {
         super.onResume();
         getContext().registerReceiver(mConnectivityReceiver, mConnectivityIntentFilter,
-                         android.Manifest.permission.CHANGE_NETWORK_STATE, null);
+                android.Manifest.permission.CHANGE_NETWORK_STATE, null);
         getContext().registerReceiver(mBatteryInfoReceiver,
                 new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
         mHandler.sendEmptyMessage(EVENT_UPDATE_STATS);
@@ -229,6 +247,7 @@ public class Status extends SettingsPreferenceFragment implements Indexable {
 
     /**
      * Removes the specified preference, if it exists.
+     *
      * @param key the key for the Preference item
      */
     private void removePreferenceFromScreen(String key) {
@@ -246,6 +265,9 @@ public class Status extends SettingsPreferenceFragment implements Indexable {
     }
 
     private void setWifiStatus() {
+        if (mWifiMacAddress == null) {
+            return;
+        }
         WifiInfo wifiInfo = mWifiManager.getConnectionInfo();
         boolean hasMacAddress = wifiInfo != null && wifiInfo.hasRealMacAddress();
         String macAddress = hasMacAddress ? wifiInfo.getMacAddress() : null;
@@ -254,6 +276,9 @@ public class Status extends SettingsPreferenceFragment implements Indexable {
 
     private void setIpAddressStatus() {
         String ipAddress = Utils.getDefaultIpAddresses(this.mCM);
+        if (mIpAddress == null) {
+            return;
+        }
         if (ipAddress != null) {
             mIpAddress.setSummary(ipAddress);
         } else {
@@ -266,7 +291,7 @@ public class Status extends SettingsPreferenceFragment implements Indexable {
         if (bluetooth != null && mBtAddress != null) {
             String address = bluetooth.isEnabled() ? bluetooth.getAddress() : null;
             if (!TextUtils.isEmpty(address)) {
-               // Convert the address to lowercase for consistency with the wifi MAC address.
+                // Convert the address to lowercase for consistency with the wifi MAC address.
                 mBtAddress.setSummary(address.toLowerCase());
             } else {
                 mBtAddress.setSummary(mUnavailable);
@@ -288,8 +313,9 @@ public class Status extends SettingsPreferenceFragment implements Indexable {
         if (ut == 0) {
             ut = 1;
         }
-
-        mUptime.setSummary(convert(ut));
+        if (mUptime != null) {
+            mUptime.setSummary(convert(ut));
+        }
     }
 
     private String pad(int n) {
@@ -301,9 +327,9 @@ public class Status extends SettingsPreferenceFragment implements Indexable {
     }
 
     private String convert(long t) {
-        int s = (int)(t % 60);
-        int m = (int)((t / 60) % 60);
-        int h = (int)((t / 3600));
+        int s = (int) (t % 60);
+        int m = (int) ((t / 60) % 60);
+        int h = (int) ((t / 3600));
 
         return h + ":" + pad(m) + ":" + pad(s);
     }

@@ -21,7 +21,7 @@ public class StatusPreferenceController extends AbstractPreferenceController imp
 
     @Override
     public boolean isAvailable() {
-        return false;
+        return true;
     }
 
     @Override
