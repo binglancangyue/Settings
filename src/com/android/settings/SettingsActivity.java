@@ -972,6 +972,12 @@ public class SettingsActivity extends SettingsDrawerActivity
                         Settings.ConnectedDeviceDashboardActivity.class.getName()),
                 true, isAdmin)
                 || somethingChanged;
+        if (Customer.IS_ONLY_SHOW_WIFI) {
+            setTileEnabled(new ComponentName(packageName,
+                    Settings.DataUsageSummaryActivity.class.getName()), false, isAdmin);
+            setTileEnabled(new ComponentName(packageName,
+                    Settings.SimSettingsActivity.class.getName()), false, isAdmin);
+        }
         //end
 
         /**

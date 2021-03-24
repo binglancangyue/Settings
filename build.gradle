@@ -11,6 +11,7 @@ apply plugin: 'com.android.application'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: '*.jar')
+    implementation 'com.android.support:preference-v7:28.0.0'
 }
 
 android {
@@ -44,7 +45,11 @@ android {
         targetCompatibility = 1.8
     }
     buildToolsVersion = '29.0.3'
-    ndkVersion '22.0.6917172 rc1'
+    ndkVersion '22.0.7026061'
+    defaultConfig {
+        minSdkVersion 23
+        targetSdkVersion 27
+    }
 }
 
 repositories {

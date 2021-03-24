@@ -27,6 +27,7 @@ import android.support.v7.preference.PreferenceScreen;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.TelephonyProperties;
 import com.android.settings.AirplaneModeEnabler;
+import com.android.settings.Customer;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settings.core.instrumentation.MetricsFeatureProvider;
 import com.android.settings.overlay.FeatureFactory;
@@ -87,7 +88,11 @@ public class AirplaneModePreferenceController extends AbstractPreferenceControll
 
     @Override
     public boolean isAvailable() {
-        return isAvailable(mContext);
+        if (Customer.IS_ONLY_SHOW_WIFI) {
+            return false;
+        } else {
+            return isAvailable(mContext);
+        }
     }
 
     public static boolean isAvailable(Context context) {
@@ -100,20 +105,26 @@ public class AirplaneModePreferenceController extends AbstractPreferenceControll
     }
 
     public void onResume() {
-        mAirplaneModeEnabler.resume();
+        if (mAirplaneModeEnabler != null) {
+            mAirplaneModeEnabler.resume();
+        }
     }
 
     @Override
     public void onPause() {
-        mAirplaneModeEnabler.pause();
+        if (mAirplaneModeEnabler != null) {
+            mAirplaneModeEnabler.pause();
+        }
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE_EXIT_ECM) {
             Boolean isChoiceYes = data.getBooleanExtra(EXIT_ECM_RESULT, false);
             // Set Airplane mode based on the return value and checkbox state
-            mAirplaneModeEnabler.setAirplaneModeInECM(isChoiceYes,
-                    mAirplaneModePreference.isChecked());
+            if (mAirplaneModeEnabler != null) {
+                mAirplaneModeEnabler.setAirplaneModeInECM(isChoiceYes,
+                        mAirplaneModePreference.isChecked());
+            }
         }
     }
 }

@@ -37,6 +37,7 @@ import android.support.annotation.VisibleForTesting;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
 
+import com.android.settings.Customer;
 import com.android.settings.R;
 import com.android.settings.TetherSettings;
 import com.android.settings.core.PreferenceControllerMixin;
@@ -121,6 +122,9 @@ public class TetherPreferenceController extends AbstractPreferenceController imp
                 (!mConnectivityManager.isTetheringSupported() && !mAdminDisallowedTetherConfig)
                         || hasBaseUserRestriction(mContext, DISALLOW_CONFIG_TETHERING,
                         UserHandle.myUserId());
+        if (Customer.IS_ONLY_SHOW_WIFI) {
+            return false;
+        }
         return !isBlocked;
     }
 

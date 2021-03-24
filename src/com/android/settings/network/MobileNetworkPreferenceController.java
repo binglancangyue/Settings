@@ -27,6 +27,7 @@ import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 
+import com.android.settings.Customer;
 import com.android.settings.Utils;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
@@ -75,7 +76,11 @@ public class MobileNetworkPreferenceController extends AbstractPreferenceControl
     @Override
     public boolean isAvailable() {
         // by lym start
-        return !isUserRestricted() && !Utils.isWifiOnly(mContext);
+        if (Customer.IS_ONLY_SHOW_WIFI) {
+            return false;
+        } else {
+            return !isUserRestricted() && !Utils.isWifiOnly(mContext);
+        }
 //        return false;
         //end
     }
