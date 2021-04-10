@@ -19,6 +19,7 @@ import android.support.v7.preference.TwoStatePreference;
 
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.internal.view.RotationPolicy;
+import com.android.settings.Customer;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settings.core.instrumentation.MetricsFeatureProvider;
 import com.android.settings.overlay.FeatureFactory;
@@ -59,8 +60,11 @@ public class AutoRotatePreferenceController extends AbstractPreferenceController
     @Override
     public boolean isAvailable() {
         // by lym start
-//        return RotationPolicy.isRotationLockToggleVisible(mContext);
-        return false;
+        if (Customer.IS_SHOW_AUTO_ROTATE) {
+            return RotationPolicy.isRotationLockToggleVisible(mContext);
+        } else {
+            return false;
+        }
         // end
     }
 

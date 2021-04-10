@@ -54,6 +54,10 @@
             settings:keywords="@string/keywords_display_brightness_level">
             <intent android:action="com.android.intent.action.SHOW_BRIGHTNESS_DIALOG" />
         </Preference>
+
+        <SwitchPreference
+            android:key="auto_rotate"
+            android:title="@string/accelerometer_title" />
         <!--by lym start-->
 
         <!-- Also vibrate for calls -->
